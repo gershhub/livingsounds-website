@@ -1,0 +1,127 @@
+body{
+  background-image: url('../img/bg.jpg');
+	margin: 0px 0px;
+}
+
+#enterDiv {
+  width: 100%;
+  height: 100%;
+}
+#enterDiv p{
+	color: #d3d3d3;
+	font-size: 48px;
+	font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+#err_msg {
+	background-color: rgba(50, 50, 50, 0.8);
+	color: #d3d3d3;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	position: relative;
+	max-width: 300px;
+	padding: 5px 5px;
+	margin: 5px auto;
+}
+
+#control{
+	background-color: rgba(50, 50, 50, 0.8);
+	position: relative;
+	width: 200px;
+	height: 35px;
+	margin: 5px auto 20px auto;
+}
+#control p{
+	color: #d3d3d3;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	position: absolute;
+	padding: 0px 0px;
+	margin: 0px 0px;
+	top: 4px;
+	left: 35px;
+	width: 100px;
+}
+#control audio{
+	width: 200px;
+	height: 25px;
+	margin: 0px auto;
+	opacity: 0.7;
+}
+
+#play {
+	background-color: rgba(100, 100, 100, 0);
+	border-radius: 50px;
+	position: absolute;
+	top: 3px;
+	left: 5px;
+	width: 22px;
+	height: 22px;
+	margin: 5px auto;
+}
+#play:hover {
+  cursor: pointer;
+}
+#play img {
+	position: absolute;
+	width:100%;
+	opacity: 1;
+}
+
+
+#volume_div {
+	background-color: rgba(100, 100, 100, 0);
+	border-radius: 10px;
+	position: absolute;
+	top: 6px;
+	left: 130px;
+	width: 70px;
+	height: 15px;
+	margin: 5px auto;
+}
+#volume_div img {
+	position: absolute;
+	top: 0px;
+	left: 4px;
+	height: 15px;
+	opacity: 0.7;
+}
+#volume {
+  -webkit-appearance: none;
+	position: absolute;
+	top: 4px;
+	left: 22px;
+  height: 3px;
+	width: 40px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+#volume:hover {
+  opacity: 1;
+}
+
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d3d3d3;
+  cursor: pointer;
+}
+
+#volume::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d3d3d3;
+  cursor: pointer;
+}
