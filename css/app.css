@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap');
 
+.modalSchedule {
+    text-align: left;
+    width: 360px;
+    height: 420px;
+    /* line-height: 200px; */
+    position: fixed;
+    top: 22%; 
+    left: 15%;
+    /* margin-top: -210px; */
+    /* margin-left: -450px; */
+    background-color: #141414;
+    border-radius: 5px;
+    z-index: 11;
+    padding:1rem 1rem 1rem 1rem;
+    color: #fff;
+    opacity:0.75;
+    font-size: .8rem;
+}
+
 .homeBody {
 	width: 100vw;
 	height: 100vh;

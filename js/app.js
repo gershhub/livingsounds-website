@@ -5,8 +5,8 @@ var isPlaying = false;
 var p5_main = undefined;
 var currentSketch = 0;
 
-var streamURL_ogg = "https://doppler.media.mit.edu/impoundment.ogg";
-var streamURL_mp3 = "https://doppler.media.mit.edu/impoundment.mp3";
+var streamURL_ogg = "https://doppler.media.mit.edu/livingsounds.ogg";
+var streamURL_mp3 = "https://doppler.media.mit.edu/livingsounds.mp3";
 
 function createAudioElement(id){
     // create audio element
