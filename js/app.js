@@ -42,44 +42,6 @@ function createEnterElement(id){
     return div;
 }
 
-function nextSketch(){
-  if( currentSketch < sketches.length-1 ){
-    p5_main.remove();
-    currentSketch++;
-    p5_main = new p5(sketches[currentSketch]);
-  }
-  if(currentSketch == sketches.length-1){
-    document.getElementById('nextButton').style.display = "none";
-  }
-  if(currentSketch > 0){
-    document.getElementById('lastButton').style.display = "block";
-  }
-  gtag('event', 'button_press', {
-  'event_category': 'switch_sketch',
-  'event_label': 'sketch_index',
-  'value': currentSketch
-  });
-}
-
-function lastSketch(){
-  if( currentSketch > 0 ){
-    p5_main.remove();
-    currentSketch--;
-    p5_main = new p5(sketches[currentSketch]);
-  }
-  if(currentSketch==0){
-    document.getElementById('lastButton').style.display = "none";
-  }
-  if(currentSketch < sketches.length-1){
-    document.getElementById('nextButton').style.display = "block";
-  }
-  gtag('event', 'button_press', {
-  'event_category': 'switch_sketch',
-  'event_label': 'sketch_index',
-  'value': currentSketch
-  });
-}
-
 function setup_audio(){
 	// setup audio stream
     try{
@@ -141,9 +103,6 @@ function initApp(){
   // loadScript("js/sketches/drawing.js");
   console.debug("Setup animation canvas.");
   setup_canvas();
-  if(currentSketch==0){
-    document.getElementById('lastButton').style.display = "none";
-  }
 }
 
 function loadScript(url) {
@@ -163,18 +122,19 @@ function registerEntry(){
 /*****************************sketch definitions*******************************/
 /******************************************************************************/
 
-// Tidmarsh Forest Bath, by Nan Zhao (NAYO)
-let TidmarshForestBath_setup = function(p) {
+// Maine, by Nan Zhao (NAYO)
+
+let Maine_setup = function(p) {
   document.getElementById('homeBodyApp').style.backgroundImage = "url('../img/TidmarshForestBath/bg.jpg')";
   document.getElementById('homeBodyApp').style.backgroundColor = "#000000";
   document.getElementById('logoContainer').style.display = "none";
-  document.getElementById('designCredit').innerHTML = "\"Tidmarsh Sound Bath\" by " + "<a href='https://nayo.info/tidmarsh' target='_blank'>Nan Zhao</a>";
+  document.getElementById('designCredit').innerHTML = "Animation by " + "<a href='https://nayo.info' target='_blank'>Nan Zhao @ NAYO</a>";
   p.setup = function() {
     cnv = p.createCanvas(p.windowWidth, 720);
     cnv.style('display', 'block');
     cnv.style('z-index', -1);
     cnv.parent('sketchContainer');
-    animation = new NanForest(p.width, p.height, audioStream, p)
+    animation = new MaineAnimation(p.width, p.height, audioStream, p)
   };
   p.draw = function() {
     if(this.animation!=undefined) {
@@ -183,24 +143,5 @@ let TidmarshForestBath_setup = function(p) {
   };
 }
 
-// Living Sounds, by Orcun Gogus
-let LivingRings_setup = function(p) {
-  document.getElementById('homeBodyApp').style.backgroundImage = "url('../img/background2x.jpg')";
-  document.getElementById('homeBodyApp').style.backgroundColor = "#141414";
-  document.getElementById('logoContainer').style.display = "block";
-  document.getElementById('designCredit').innerHTML = "\"Living Sounds\" by " + "<a href='https://orcungogus.com' target='_blank'>Orcun Gogus</a>, based on a sketch by <a href='https://generated.space/' target='_blank'>Kjetil Golid</a>";
-  p.setup = function() {
-    cnv = p.createCanvas(p.windowWidth, 720);
-    cnv.style('display', 'block');
-    cnv.parent('sketchContainer');
-    cnv.style('z-index', -1);
-    animation = new LivingRings(p.width, p.height, audioStream, p)
-  };
-  p.draw = function() {
-    if(this.animation!=undefined) {
-      animation.draw()
-    }
-  };
-}
 
-var sketches = [TidmarshForestBath_setup, LivingRings_setup];
+var sketches = [Maine_setup];
