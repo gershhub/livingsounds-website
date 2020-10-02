@@ -269,8 +269,8 @@ class Crab {
     crabVertexToDraw.forEach((item) =>
       this.p5.vertex(item[0] + this.dx, item[1] + this.dy)
     );
-    // draw highlights
     this.p5.endShape(this.p5.CLOSE);
+    // draw highlights
     this.p5.fill(this.p5.color(...CRAB_HIGHLIGHT_COLOR));
     crabColorVertexToDraw.forEach((item) => {
       this.p5.beginShape();
