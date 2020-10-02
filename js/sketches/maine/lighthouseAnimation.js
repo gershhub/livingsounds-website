@@ -1,8 +1,8 @@
 const LIGHT_HOUSE_COLOR = "#395b50";
 const LIGHT_HOUSE_VERTEX = [787, 508];
 const LIGHT_HOUSE_BEZIER_VERTEX = [
-  [788.559, 485.7, 795.425, 461.868, 803, 440],
-  [815.034, 416.3, 828.687, 420.586, 833, 439],
+  [788.559, 445.7, 795.425, 420, 803, 400],
+  [815.034, 386.3, 828.687, 390, 833, 400],
   [837.313, 457.414, 846.081, 497.412, 847, 506],
   [847.919, 514.588, 801.042, 521.715, 787, 508],
 ];
@@ -13,15 +13,15 @@ class Lighthouse {
     this.height = height;
     this.p5 = p5;
     this.lighthouseVertex = [
-      (LIGHT_HOUSE_VERTEX[0] / 1400.0 + 0.15) * this.width,
-      (LIGHT_HOUSE_VERTEX[1] / 1400.0 + 0.15) * this.height,
+      ((LIGHT_HOUSE_VERTEX[0] + 110) / 1200.0) * this.width,
+      ((LIGHT_HOUSE_VERTEX[1] + 110) / 1200.0) * this.height,
     ];
     this.lighthouseBezierVertex = LIGHT_HOUSE_BEZIER_VERTEX.map((item) =>
       item.map((value, index) => {
         if (index % 2) {
-          return (value / 1400.0 + 0.15) * this.height;
+          return ((value + 110) / 1200.0) * this.width;
         } else {
-          return (value / 1400.0 + 0.15) * this.width;
+          return ((value + 110) / 1200.0) * this.height;
         }
       })
     );
@@ -67,7 +67,7 @@ class Lighthouse {
     this.p5.endShape();
 
     // draw window
-    this.p5.fill(this.p5.color(0, 0, 0));
+    this.p5.fill(this.p5.color("yellow"));
     this.p5.circle(...this.lightPos, this.lightWidth);
     // draw rings
     this.p5.stroke(this.p5.color("#5a7684"));

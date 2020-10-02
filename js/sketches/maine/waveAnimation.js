@@ -1,9 +1,10 @@
+WAVE_COLOR = [255, 204, 255];
+
 class Wave {
   constructor(
     width,
     height,
     sketch,
-    colorValues = [255, 204, 255],
     visibleLimitFactor = -0.5,
     shiftFactor = 0.5,
     waveCrashFactor = 0.8
@@ -12,7 +13,7 @@ class Wave {
     this.width = width;
     this.height = height;
     this.p5 = sketch;
-    this.color = this.p5.color(...colorValues);
+    this.color = this.p5.color(...WAVE_COLOR);
     this.addLineMinDist = 0.08 * this.height; // minimum distance between lines
     this.shift = shiftFactor; // shift of one side to create waves at an angle
     this.visibleLimit = visibleLimitFactor * this.height - this.shift;
@@ -20,7 +21,6 @@ class Wave {
     this.waveCrashLimit = waveCrashFactor * this.height + this.visibleLimit;
     this.speedMin = 0.001; // minimum speed px / s
     this.speedRange = 0.005; // range of speeds px / s
-
     // variables
     this.deltaTimeLastLine = 0;
     this.addLineRandomDelay = 0;
@@ -29,6 +29,11 @@ class Wave {
     for (let i = 0; i < 20; i++) {
       this.addLine(this.height - i * this.addLineMinDist);
     }
+    this.hitDetected = false;
+  }
+
+  setBuoyInfo(info) {
+    this.buoy = info;
   }
 
   addLine(y = this.height) {
@@ -68,6 +73,7 @@ class Wave {
     this.lines = this.lines.filter((item) => item[0] > this.visibleLimit);
 
     // draw lines
+    this.hitDetected = false;
     this.lines.forEach((item) => {
       // styling
       this.p5.noStroke();
@@ -92,7 +98,17 @@ class Wave {
         item[1],
         item[0]
       );
+
+      // calculate hit detection
+      let hitDist = item[1] - this.buoy.pos[0];
+      if (hitDist < item[4] && hitDist > 0) {
+        let yStar = hitDist * this.shift + item[0];
+        if (Math.abs(yStar - this.buoy.pos[1]) < this.buoy.height) {
+          this.hitDetected = true;
+        }
+      }
     });
+    return this.hitDetected;
   }
 
   limit(value, min, max) {
