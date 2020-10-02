@@ -57,8 +57,7 @@ class Wave {
     } else if (this.speed > speedTarget + 0.0005) {
       this.speed -= 0.0005;
     }
-    const dTime = this.p5.deltaTime;
-    console.log(this.speed);
+    const dTime = this.p5.deltaTime; 
 
     // add new line
     if (this.deltaTimeLastLine > this.addLineRandomDelay) {
@@ -95,7 +94,6 @@ class Wave {
       this.p5.fill(this.color);
 
       // calculate wave spread factor
-
       let a =
         Math.pow(this.p5.sin(item[5]), 2) * this.height * this.waveCurveFactor;
 

@@ -34,8 +34,27 @@ class MaineAnimation {
     );
     this.wave.setBuoyInfo(this.forground.getBuoyInfo());
 
+    // calculate crab position
+    this.crab1 = new Crab(
+      this.islandWidth * 0.2,
+      this.islandHeight * 0.2,
+      this.p5,
+      [this.islandWidth * 0.8, this.islandHeight * 0.5],
+      0.025 * this.islandWidth,
+      4.5
+    );
+    // calculate crab position
+    this.crab2 = new Crab(
+      this.islandWidth * 0.2,
+      this.islandHeight * 0.2,
+      this.p5,
+      [this.islandWidth * 0.78, this.islandHeight * 0.5],
+      0.025 * this.islandWidth,
+      4.0
+    );
+
     // configuration
-    p5.frameRate(8);
+    this.p5.frameRate(8);
   }
 
   draw = (audio) => {
@@ -43,7 +62,7 @@ class MaineAnimation {
     let pWind = 0.8;
     let pBird = 0.01;
     let pBug = 0.01;
-    let pTree = 0.05
+    let pTree = 0.05;
 
     // get sound analysis
     this.audio = audio;
@@ -58,7 +77,7 @@ class MaineAnimation {
       let bus = (amp[2] + amp[3]) * 0.01; // bugs
 
       pTree = limitValue(Math.pow(ws, 2) * 0.01, 0, 0.2);
-      pWind = pTree * 5
+      pWind = pTree * 5;
       pBird = Math.pow(Math.max(bs - 0.5 * ws, 0), 2) * 0.001;
       pBug = limitValue(Math.pow(Math.max(bus - 0.5 * ws, 0), 4) * 0.01, 0, 1);
       // night
@@ -67,16 +86,18 @@ class MaineAnimation {
         pBug = Math.pow(Math.max(bus - 0.5 * ws, 0), 2) * 0.001; //high
       }
     }
-    console.log(pWind, pTree, pBird, pBug);
+    //console.log(pWind, pTree, pBird, pBug);
 
+    // draw wave in the background layer
     this.p5.background("#73a1ff");
     let hitDetected = this.wave.draw(pWind);
     this.p5.push();
     this.p5.translate(this.offsetX, this.offsetY);
     this.island.draw();
     this.forest.draw(pTree, pBird, pBug);
+    this.crab1.draw(pWind);
+    this.crab2.draw(pWind);
     this.lighthouse.draw();
     this.p5.pop();
-    //this.forground.draw(hitDetected);
   };
 }

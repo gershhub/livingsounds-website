@@ -157,7 +157,7 @@ const CRAB_COLOR_PATCHES = [
 ];
 
 class Crab {
-  constructor(width, height, p5, pos = [0, 0], radius = 100) {
+  constructor(width, height, p5, pos = [0, 0], radius = 100, alpha0 = 2) {
     // constants
     this.width = width;
     this.height = height;
@@ -211,10 +211,12 @@ class Crab {
         0.4 * (this.crabVertex[4][0] - this.crabVertex[3][0]),
     ];
     this.speed = 0.0001;
+    this.crabWidth = 0.2 * this.width;
+    this.hidingWidth = 2 * radius + this.crabWidth;
 
     // variables
     this.pos = pos;
-    this.alpha = 0;
+    this.alpha = alpha0;
     this.radius = radius;
     this.cut = true;
     this.walk = true;
@@ -222,14 +224,14 @@ class Crab {
     this.dy = this.pos[1];
   }
 
-  draw() {
+  draw(controlFactor) {
     // calculate vertext position
     let step = Math.floor(this.p5.frameCount) % 8;
     let crabVertexToDraw = [...this.crabVertex];
     let crabColorVertexToDraw = this.crabColorVertex.map((item) => [...item]);
     if (step == 0) {
       this.cut = coinFlip(0.5);
-      this.walk = coinFlip(0.6);
+      this.walk = coinFlip(controlFactor);
     }
     if (this.cut) {
       if (CLOSE_FRAMES[step]) {
@@ -242,12 +244,16 @@ class Crab {
         crabColorVertexToDraw[5][2] = this.closedR;
         crabColorVertexToDraw[7][1] = this.closedL;
       }
-    } 
+    }
     if (this.walk) {
       // calculate movement
       this.alpha += this.speed * this.p5.deltaTime;
-      this.dx = Math.sin(this.alpha) * this.radius + this.pos[0];
+      this.dx =
+        Math.sin(this.alpha) * this.radius +
+        this.pos[0] +
+        this.p5.random(-0.1, 0.1);
       this.dy = Math.cos(this.alpha) * this.radius + this.pos[1];
+      +this.p5.random(-0.1, 0.1);
       if (LEG_FRAMES[step]) {
         crabVertexToDraw[0] = this.legInLTop;
         crabVertexToDraw[3] = this.legInLBottom;
@@ -278,12 +284,15 @@ class Crab {
     this.p5.circle(
       crabVertexToDraw[13][0] + this.dx,
       crabVertexToDraw[13][1] + this.dy,
-      2
+      1
     );
     this.p5.circle(
       crabVertexToDraw[17][0] + this.dx,
       crabVertexToDraw[17][1] + this.dy,
-      2
+      1
     );
+    // draw hiding
+    //this.p5.fill(this.p5.color(ISLAND_STONES_COLOR));
+    //this.p5.arc(...this.pos, this.hidingWidth, this.hidingWidth, 0, 3);
   }
 }
