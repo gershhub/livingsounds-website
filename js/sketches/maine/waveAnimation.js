@@ -19,16 +19,19 @@ class Wave {
     this.visibleLimit = visibleLimitFactor * this.height - this.shift;
     this.waveCurveFactor = 0.03;
     this.waveCrashLimit = waveCrashFactor * this.height + this.visibleLimit;
-    this.speedMin = 0.001; // minimum speed px / s
-    this.speedRange = 0.05; // range of speeds px / s
+    this.speedMin = 0.002; // minimum speed px / s
+    this.speedRange = 0.02; // range of speeds px / s
+    this.alphaSpeedFactor = 0.03; // wave crashing rhythm
+    this.alphaSpeedMin = 1
     // variables
-    this.speed = 0
+    this.speed = 0;
     this.deltaTimeLastLine = 0;
     this.addLineRandomDelay = 0;
     this.lines = [];
     // add 20 lines
     for (let i = 0; i < 20; i++) {
-      this.addLine(this.height - i * this.addLineMinDist);
+      let seed = this.height - i * this.addLineMinDist;
+      this.addLine(seed, seed);
     }
     this.hitDetected = false;
   }
@@ -37,25 +40,25 @@ class Wave {
     this.buoy = info;
   }
 
-  addLine(y = this.height) {
+  addLine(y = this.height, alpha = 0) {
     let length = this.p5.random(0.2, 0.6) * this.width;
     let y3 = y;
     let x3 = (1 - this.p5.random(-1, 1)) * this.width;
     let dx2 = this.p5.random(0.2, 0.5) * length;
     let dx1 = this.p5.random(0.5, 0.7) * length;
     let dx0 = length;
-    this.lines.push([y3, x3, dx2, dx1, dx0]);
+    this.lines.push([y3, x3, dx2, dx1, dx0, alpha]);
   }
 
   draw(controlFactor = 1) {
     const speedTarget = this.speedMin + this.speedRange * controlFactor;
-    if (this.speed < speedTarget - 0.0005){
-      this.speed += 0.0001
-    } else if (this.speed > speedTarget + 0.0005){
-      this.speed -= 0.0001
+    if (this.speed < speedTarget - 0.0005) {
+      this.speed += 0.0005;
+    } else if (this.speed > speedTarget + 0.0005) {
+      this.speed -= 0.0005;
     }
-    const dTime = this.p5.deltaTime
-    console.log(this.speed)
+    const dTime = this.p5.deltaTime;
+    console.log(this.speed);
 
     // add new line
     if (this.deltaTimeLastLine > this.addLineRandomDelay) {
@@ -63,7 +66,8 @@ class Wave {
       this.deltaTimeLastLine = 0;
       // calculate next time to add line
       this.addLineRandomDelay =
-        (this.addLineMinDist * (1 + this.p5.random(1))) / speedTarget;
+        (this.addLineMinDist * (1 - controlFactor + this.p5.random(1))) /
+        speedTarget;
       // add new line
       this.addLine();
     } else {
@@ -75,6 +79,7 @@ class Wave {
     this.lines = this.lines.map((item) => {
       item[0] -= d;
       item[1] -= d * this.shift;
+      item[5] += this.alphaSpeedFactor * Math.max(d, this.alphaSpeedMin);
       return item;
     });
 
@@ -92,9 +97,7 @@ class Wave {
       // calculate wave spread factor
 
       let a =
-        Math.pow(this.p5.sin(item[0] * 0.05), 2) *
-        this.height *
-        this.waveCurveFactor;
+        Math.pow(this.p5.sin(item[5]), 2) * this.height * this.waveCurveFactor;
 
       // draw line
       this.p5.bezier(

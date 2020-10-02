@@ -40,9 +40,10 @@ class MaineAnimation {
 
   draw = (audio) => {
     // default control factors
-    let pWind = 0.05;
+    let pWind = 0.8;
     let pBird = 0.01;
     let pBug = 0.01;
+    let pTree = 0.05
 
     // get sound analysis
     this.audio = audio;
@@ -56,7 +57,8 @@ class MaineAnimation {
       let bs = amp[1] * 0.01 + (amp[4] + amp[5] + amp[6] + amp[7]) * 0.006; // bird
       let bus = (amp[2] + amp[3]) * 0.01; // bugs
 
-      pWind = limitValue(Math.pow(ws, 2) * 0.01, 0, 1);
+      pTree = limitValue(Math.pow(ws, 2) * 0.01, 0, 0.2);
+      pWind = pTree * 5
       pBird = Math.pow(Math.max(bs - 0.5 * ws, 0), 2) * 0.001;
       pBug = limitValue(Math.pow(Math.max(bus - 0.5 * ws, 0), 4) * 0.01, 0, 1);
       // night
@@ -65,14 +67,14 @@ class MaineAnimation {
         pBug = Math.pow(Math.max(bus - 0.5 * ws, 0), 2) * 0.001; //high
       }
     }
-    //console.log(pWind, pBird, pBug);
+    console.log(pWind, pTree, pBird, pBug);
 
     this.p5.background("#73a1ff");
     let hitDetected = this.wave.draw(pWind);
     this.p5.push();
     this.p5.translate(this.offsetX, this.offsetY);
     this.island.draw();
-    this.forest.draw(pWind, pBird, pBug);
+    this.forest.draw(pTree, pBird, pBug);
     this.lighthouse.draw();
     this.p5.pop();
     //this.forground.draw(hitDetected);
