@@ -20,8 +20,9 @@ class Wave {
     this.waveCurveFactor = 0.03;
     this.waveCrashLimit = waveCrashFactor * this.height + this.visibleLimit;
     this.speedMin = 0.001; // minimum speed px / s
-    this.speedRange = 0.005; // range of speeds px / s
+    this.speedRange = 0.05; // range of speeds px / s
     // variables
+    this.speed = 0
     this.deltaTimeLastLine = 0;
     this.addLineRandomDelay = 0;
     this.lines = [];
@@ -46,15 +47,23 @@ class Wave {
     this.lines.push([y3, x3, dx2, dx1, dx0]);
   }
 
-  draw(dTime, controlFactor = 1) {
-    const speed = this.speedMin + this.speedRange * controlFactor;
+  draw(controlFactor = 1) {
+    const speedTarget = this.speedMin + this.speedRange * controlFactor;
+    if (this.speed < speedTarget - 0.0005){
+      this.speed += 0.0001
+    } else if (this.speed > speedTarget + 0.0005){
+      this.speed -= 0.0001
+    }
+    const dTime = this.p5.deltaTime
+    console.log(this.speed)
+
     // add new line
     if (this.deltaTimeLastLine > this.addLineRandomDelay) {
       // reset delta time since last line added
       this.deltaTimeLastLine = 0;
       // calculate next time to add line
       this.addLineRandomDelay =
-        (this.addLineMinDist * (1 + this.p5.random(1))) / speed;
+        (this.addLineMinDist * (1 + this.p5.random(1))) / speedTarget;
       // add new line
       this.addLine();
     } else {
@@ -62,7 +71,7 @@ class Wave {
     }
 
     // move lines
-    const d = speed * dTime;
+    const d = this.speed * dTime;
     this.lines = this.lines.map((item) => {
       item[0] -= d;
       item[1] -= d * this.shift;

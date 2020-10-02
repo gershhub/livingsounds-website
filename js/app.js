@@ -140,11 +140,11 @@ let Maine_setup = function(p) {
     cnv.style('display', 'block');
     cnv.style('z-index', -1);
     cnv.parent('sketchContainer');
-    animation = new MaineAnimation(p.width, p.height, audioStream, p, images)
+    animation = new MaineAnimation(p.width, p.height, p, images)
   };
   p.draw = function() {
     if(this.animation!=undefined) {
-        animation.draw()
+        animation.draw(audioStream)
     }
   };
 }

@@ -36,17 +36,17 @@ class Forest {
     }
   }
 
-  draw(controlFactor) {
+  draw(controlTree, controlBird, controlBug) {
     for (let id = 0; id < N_TREES; id++) {
-      this.trees[id].draw(controlFactor);
+      this.trees[id].draw(controlTree);
     }
     // draw birds
     for (let id = 0; id < N_BIRDS; id++) {
-      this.birds[id].fly(controlFactor);
+      this.birds[id].fly(controlBird);
     }
     //draw bugs
     for (let id = 0; id < N_BUGS; id++) {
-      this.bugs[id].fly(controlFactor);
+      this.bugs[id].fly(controlBug);
     }
   }
 }

@@ -54,7 +54,7 @@ class Lighthouse {
     this.angle = 0;
     this.speed = 0.00001;
   }
-  draw(dTime) {
+  draw() {
     this.p5.noStroke();
 
     // draw lighthouse
@@ -81,7 +81,7 @@ class Lighthouse {
     // draw light
     this.p5.noStroke();
     this.p5.fill(this.p5.color(255, 255, 255, 50));
-    this.angle += this.speed * dTime;
+    this.angle += this.speed * this.p5.deltaTime;
     this.p5.arc(
       ...this.lightPos,
       this.width,
