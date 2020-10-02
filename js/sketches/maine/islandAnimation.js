@@ -1,4 +1,4 @@
-const ISLAND_STONES_COLOR = "#fff1e6";
+const ISLAND_STONES_COLOR = "#AEBFBC";
 const ISLAND_STONES_VERTEX = [970, 479];
 const ISLAND_STONES_BEZIER_VERTEX = [
   [1004.53, 350.368, 628.887, 73.9, 286, 107],
@@ -9,7 +9,7 @@ const ISLAND_STONES_BEZIER_VERTEX = [
   [866.685, 550.434, 961.045, 512.361, 970, 479],
 ];
 
-const ISLAND_GRASS_COLOR = [0, 0, 0];
+const ISLAND_GRASS_COLOR = "#1F1208";
 const ISLAND_GRASS_VERTEX = [198, 139];
 const ISLAND_GRASS_BEZIER_VERTEX = [
   [167.846, 157.727, 111.429, 145.525, 104, 283],
@@ -69,7 +69,7 @@ class Island {
     this.p5.endShape();
 
     // draw island grass
-    this.p5.fill(this.p5.color(...ISLAND_GRASS_COLOR));
+    this.p5.fill(this.p5.color(ISLAND_GRASS_COLOR));
     this.p5.beginShape();
     this.p5.vertex(...this.islandGrassVertex);
     this.islandGrassBezierVertex.forEach((item) =>

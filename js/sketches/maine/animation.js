@@ -18,7 +18,6 @@ class MaineAnimation {
     this.offsetY = (this.height - this.islandHeight) * 0.5;
 
     // create objects
-    this.wave = new Wave(this.width, this.height, this.p5);
     this.island = new Island(this.islandWidth, this.islandHeight, this.p5);
     this.forest = new Forest(this.islandWidth, this.islandHeight, this.p5);
     this.lighthouse = new Lighthouse(
@@ -26,15 +25,10 @@ class MaineAnimation {
       this.islandHeight,
       this.p5
     );
-    this.forground = new Forground(
-      this.width,
-      this.height,
-      this.p5,
-      this.images
-    );
-    this.wave.setBuoyInfo(this.forground.getBuoyInfo());
-
-    // calculate crab position
+    this.forground = new Forground(this.width, this.height, this.p5, this.images)
+    this.wave = new Wave(this.width, this.height, this.p5);
+    this.colliders = {"forground": this.forground.getCollider()}
+    this.wave.addCollision(this.colliders);
     this.crab1 = new Crab(
       this.islandWidth * 0.2,
       this.islandHeight * 0.2,
@@ -43,7 +37,6 @@ class MaineAnimation {
       0.025 * this.islandWidth,
       4.5
     );
-    // calculate crab position
     this.crab2 = new Crab(
       this.islandWidth * 0.2,
       this.islandHeight * 0.2,
@@ -88,9 +81,12 @@ class MaineAnimation {
     }
     //console.log(pWind, pTree, pBird, pBug);
 
-    // draw wave in the background layer
+    // draw ocean
     this.p5.background("#73a1ff");
-    let hitDetected = this.wave.draw(pWind);
+    this.wave.draw(pWind);
+    let hitForground = 'forground' in this.wave.hitDetected
+    this.forground.draw(hitForground)
+    // draw island
     this.p5.push();
     this.p5.translate(this.offsetX, this.offsetY);
     this.island.draw();

@@ -1,5 +1,5 @@
 WAVE_COLOR = [255, 204, 255];
-
+WATER_COLOR = "#518EA6";
 class Wave {
   constructor(
     width,
@@ -13,7 +13,8 @@ class Wave {
     this.width = width;
     this.height = height;
     this.p5 = sketch;
-    this.color = this.p5.color(...WAVE_COLOR);
+    this.waveColor = this.p5.color(...WAVE_COLOR);
+    this.waterColor = this.p5.color(WATER_COLOR);
     this.addLineMinDist = 0.08 * this.height; // minimum distance between lines
     this.shift = shiftFactor; // shift of one side to create waves at an angle
     this.visibleLimit = visibleLimitFactor * this.height - this.shift;
@@ -22,7 +23,7 @@ class Wave {
     this.speedMin = 0.002; // minimum speed px / s
     this.speedRange = 0.02; // range of speeds px / s
     this.alphaSpeedFactor = 0.03; // wave crashing rhythm
-    this.alphaSpeedMin = 1
+    this.alphaSpeedMin = 1;
     // variables
     this.speed = 0;
     this.deltaTimeLastLine = 0;
@@ -33,11 +34,12 @@ class Wave {
       let seed = this.height - i * this.addLineMinDist;
       this.addLine(seed, seed);
     }
-    this.hitDetected = false;
+    this.hitDetected = {};
+    this.colliders = {};
   }
 
-  setBuoyInfo(info) {
-    this.buoy = info;
+  addCollision(colliders) {
+    this.colliders = colliders;
   }
 
   addLine(y = this.height, alpha = 0) {
@@ -51,13 +53,17 @@ class Wave {
   }
 
   draw(controlFactor = 1) {
+    // background
+    this.p5.background(this.waterColor);
+
+    // calulate speed
     const speedTarget = this.speedMin + this.speedRange * controlFactor;
     if (this.speed < speedTarget - 0.0005) {
       this.speed += 0.0005;
     } else if (this.speed > speedTarget + 0.0005) {
       this.speed -= 0.0005;
     }
-    const dTime = this.p5.deltaTime; 
+    const dTime = this.p5.deltaTime;
 
     // add new line
     if (this.deltaTimeLastLine > this.addLineRandomDelay) {
@@ -86,12 +92,12 @@ class Wave {
     this.lines = this.lines.filter((item) => item[0] > this.visibleLimit);
 
     // draw lines
-    this.hitDetected = false;
+    this.hitDetected = {};
     this.lines.forEach((item) => {
       // styling
       this.p5.noStroke();
       //this.p5.stroke(this.color);
-      this.p5.fill(this.color);
+      this.p5.fill(this.waveColor);
 
       // calculate wave spread factor
       let a =
@@ -110,15 +116,21 @@ class Wave {
       );
 
       // calculate hit detection
-      let hitDist = item[1] - this.buoy.pos[0];
-      if (hitDist < item[4] && hitDist > 0) {
-        let yStar = hitDist * this.shift + item[0];
-        if (Math.abs(yStar - this.buoy.pos[1]) < this.buoy.height) {
-          this.hitDetected = true;
-        }
+      if (Object.keys(this.colliders).length > 0) {
+        Object.entries(this.colliders).forEach((entry) => {
+          const [id, values] = entry; // value[x,y,w,h]
+          // this.p5.fill(this.p5.color("red"));
+          // this.p5.circle(...values);
+          let hitDist = item[1] - values[0];
+          if (hitDist < item[4] && hitDist > 0) {
+            let yStar = hitDist * this.shift + item[0];
+            if (Math.abs(yStar - values[1]) < values[3]) {
+              this.hitDetected[id] = true;
+            }
+          }
+        });
       }
     });
-    return this.hitDetected;
   }
 
   limit(value, min, max) {

@@ -131,9 +131,7 @@ let Maine_setup = function(p) {
   document.getElementById('designCredit').innerHTML = "Animation by " + "<a href='https://nayo.info' target='_blank'>Nan Zhao @ NAYO</a>";
   let images = []
   p.preload = function() {
-    images[0] = p.loadImage('../img/MaineAnimation/Buoy-CIFF.png');
-    images[1] = p.loadImage('../img/MaineAnimation/Buoy-SI.png');
-    images[2] = p.loadImage('../img/MaineAnimation/Buoy-nayo.png');
+    images[0] = p.loadImage('../img/MaineAnimation/boat.png');
   }
   p.setup = function() {
     cnv = p.createCanvas(p.windowWidth, 720);
