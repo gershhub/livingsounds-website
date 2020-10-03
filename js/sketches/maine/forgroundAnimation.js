@@ -15,11 +15,10 @@ BOAT_LINE = [0.0, 30.0, 472.0, 69.0];
 BOAT_HEIGHT = 176;
 BOAT_WIDTH = 469.287;
 class Forground {
-  constructor(width, height, p5, images) {
+  constructor(width, height, p5) {
     this.width = width;
     this.height = height;
     this.p5 = p5;
-    this.images = images;
 
     let scaler = 0.0001 * this.width;
     this.boatVertex = BOAT_VERTEX.map((item) => [

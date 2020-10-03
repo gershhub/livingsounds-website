@@ -1,9 +1,8 @@
 class MaineAnimation {
-  constructor(width, height, p5, images) {
+  constructor(width, height, p5) {
     this.width = width;
     this.height = height;
     this.p5 = p5;
-    this.images = images;
 
     // limit island size
     this.islandWidth = limitValue(width, 750, 1000) * 0.8;
@@ -25,7 +24,7 @@ class MaineAnimation {
       this.islandHeight,
       this.p5
     );
-    this.forground = new Forground(this.width, this.height, this.p5, this.images)
+    this.forground = new Forground(this.width, this.height, this.p5)
     this.wave = new Wave(this.width, this.height, this.p5);
     this.colliders = {"forground": this.forground.getCollider()}
     this.wave.addCollision(this.colliders);
@@ -82,7 +81,6 @@ class MaineAnimation {
     //console.log(pWind, pTree, pBird, pBug);
 
     // draw ocean
-    this.p5.background("#73a1ff");
     this.wave.draw(pWind);
     let hitForground = 'forground' in this.wave.hitDetected
     this.forground.draw(hitForground)

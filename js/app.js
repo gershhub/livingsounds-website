@@ -129,16 +129,12 @@ let Maine_setup = function(p) {
   document.getElementById('homeBodyApp').style.backgroundColor = "#000000";
   document.getElementById('logoContainer').style.display = "none";
   document.getElementById('designCredit').innerHTML = "Animation by " + "<a href='https://nayo.info' target='_blank'>Nan Zhao @ NAYO</a>";
-  let images = []
-  p.preload = function() {
-    images[0] = p.loadImage('../img/MaineAnimation/boat.png');
-  }
   p.setup = function() {
     cnv = p.createCanvas(p.windowWidth, 720);
     cnv.style('display', 'block');
     cnv.style('z-index', -1);
     cnv.parent('sketchContainer');
-    animation = new MaineAnimation(p.width, p.height, p, images)
+    animation = new MaineAnimation(p.width, p.height, p)
   };
   p.draw = function() {
     if(this.animation!=undefined) {
