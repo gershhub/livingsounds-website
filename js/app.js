@@ -141,6 +141,9 @@ let Maine_setup = function(p) {
         animation.draw(audioStream)
     }
   };
+  p.windowResized = function() {
+    p.resizeCanvas(p.windowWidth, 720);
+  }
 }
 
 
