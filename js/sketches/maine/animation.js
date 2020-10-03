@@ -10,7 +10,7 @@ class MaineAnimation {
 
     // position the island in the center if possible
     // if the canvas is to narrow position alight to right side
-    this.offsetX = (this.width - this.islandWidth) * 0.5;
+    this.offsetX = (this.width - this.islandWidth) * 0.2;
     if (this.offsetX < 0) {
       this.offsetX = this.width - this.islandWidth;
     }
