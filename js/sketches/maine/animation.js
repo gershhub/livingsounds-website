@@ -24,9 +24,9 @@ class MaineAnimation {
       this.islandHeight,
       this.p5
     );
-    this.forground = new Forground(this.width, this.height, this.p5)
+    this.forground = new Forground(this.width, this.height, this.p5);
     this.wave = new Wave(this.width, this.height, this.p5);
-    this.colliders = {"forground": this.forground.getCollider()}
+    this.colliders = { forground: this.forground.getCollider() };
     this.wave.addCollision(this.colliders);
     this.crab1 = new Crab(
       this.islandWidth * 0.2,
@@ -49,7 +49,7 @@ class MaineAnimation {
     this.p5.frameRate(8);
   }
 
-  draw = (audio) => {
+  draw(audio) {
     // default control factors
     let pWind = 0.8;
     let pBird = 0.01;
@@ -60,7 +60,8 @@ class MaineAnimation {
     this.audio = audio;
     if (this.audio != undefined) {
       let amp = this.audio.analyse();
-
+      amp.forEach((item) => let);
+      console.log(amp);
       // update probabilities
       let timeDate = new Date();
       let hour = timeDate.getHours;
@@ -82,8 +83,8 @@ class MaineAnimation {
 
     // draw ocean
     this.wave.draw(pWind);
-    let hitForground = 'forground' in this.wave.hitDetected
-    this.forground.draw(hitForground)
+    let hitForground = "forground" in this.wave.hitDetected;
+    this.forground.draw(hitForground);
     // draw island
     this.p5.push();
     this.p5.translate(this.offsetX, this.offsetY);
@@ -93,5 +94,5 @@ class MaineAnimation {
     this.crab2.draw(pWind);
     this.lighthouse.draw();
     this.p5.pop();
-  };
+  }
 }
