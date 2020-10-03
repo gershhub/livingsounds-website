@@ -60,7 +60,18 @@ class MaineAnimation {
     this.audio = audio;
     if (this.audio != undefined) {
       let amp = this.audio.analyse();
-      //amp.forEach((item) => let);
+      let resample = 2;
+      let counter = -1;
+      let ampResampled = [];
+      amp.forEach((item, index) => {
+        if (index % resample == 0) {
+          counter += 1;
+          ampResampled[counter] = item / resample ;
+        } else {
+          ampResampled[counter] += item / resample;
+        }
+      });
+      amp = ampResampled
       console.log(amp);
       // update probabilities
       let timeDate = new Date();
