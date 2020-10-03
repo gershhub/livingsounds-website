@@ -1,4 +1,4 @@
-WAVE_COLOR = [255, 204, 255];
+WAVE_COLOR = [242, 216, 167];
 WATER_COLOR = "#518EA6";
 class Wave {
   constructor(
