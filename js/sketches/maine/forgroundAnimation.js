@@ -20,7 +20,7 @@ class Forground {
     this.height = height;
     this.p5 = p5;
 
-    let scaler = 0.0001 * this.width;
+    let scaler = 0.0001 * Math.max(this.width, 1000);
     this.boatVertex = BOAT_VERTEX.map((item) => [
       item[0] * scaler,
       item[1] * scaler,
