@@ -1,4 +1,3 @@
-
 const ISLAND_STONES_VERTEX = [970, 479];
 const ISLAND_STONES_BEZIER_VERTEX = [
   [1004.53, 350.368, 628.887, 73.9, 286, 107],
@@ -8,8 +7,6 @@ const ISLAND_STONES_BEZIER_VERTEX = [
   [413.922, 608.155, 542.313, 616.627, 712, 582],
   [866.685, 550.434, 961.045, 512.361, 970, 479],
 ];
-
-
 const ISLAND_GRASS_VERTEX = [198, 139];
 const ISLAND_GRASS_BEZIER_VERTEX = [
   [167.846, 157.727, 111.429, 145.525, 104, 283],
@@ -56,6 +53,28 @@ class Island {
     );
   }
 
+  getWalkPath(scale = 0.95) {
+    let walkScale = scale / 1000;
+    let walkOffset = 1000 * (1 - 0.98) * 0.5;
+    let islandWalkVertex = [
+      (ISLAND_STONES_VERTEX[0] + walkOffset) * walkScale * this.width,
+      (ISLAND_STONES_VERTEX[1] + walkOffset) * walkScale * this.height,
+    ];
+    let islandWalkBezierVertex = ISLAND_STONES_BEZIER_VERTEX.map((item) =>
+      item.map((value, index) => {
+        if (index % 2) {
+          return (value + walkOffset) * walkScale * this.height;
+        } else {
+          return (value + walkOffset) * walkScale * this.width;
+        }
+      })
+    );
+    return {
+      vertexPoint: islandWalkVertex,
+      bezierVertexPoints: islandWalkBezierVertex,
+    };
+  }
+
   draw() {
     this.p5.noStroke();
 
@@ -76,6 +95,5 @@ class Island {
       this.p5.bezierVertex(...item)
     );
     this.p5.endShape();
-
   }
 }

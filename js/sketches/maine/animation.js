@@ -32,17 +32,13 @@ class MaineAnimation {
       this.islandWidth * 0.2,
       this.islandHeight * 0.2,
       this.p5,
-      [this.islandWidth * 0.8, this.islandHeight * 0.5],
-      0.025 * this.islandWidth,
-      4.5
+      this.island.getWalkPath(0.95)
     );
     this.crab2 = new Crab(
       this.islandWidth * 0.2,
       this.islandHeight * 0.2,
       this.p5,
-      [this.islandWidth * 0.78, this.islandHeight * 0.5],
-      0.025 * this.islandWidth,
-      4.0
+      this.island.getWalkPath(0.94)
     );
 
     // configuration
@@ -66,13 +62,13 @@ class MaineAnimation {
       amp.forEach((item, index) => {
         if (index % resample == 0) {
           counter += 1;
-          ampResampled[counter] = item / resample ;
+          ampResampled[counter] = item / resample;
         } else {
           ampResampled[counter] += item / resample;
         }
       });
-      amp = ampResampled
-      console.log(amp);
+      amp = ampResampled;
+
       // update probabilities
       let timeDate = new Date();
       let hour = timeDate.getHours;

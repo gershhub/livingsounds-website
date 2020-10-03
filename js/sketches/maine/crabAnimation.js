@@ -96,7 +96,7 @@ const CRAB_COLOR_PATCHES = [
 ];
 
 class Crab {
-  constructor(width, height, p5, pos = [0, 0], radius = 100, alpha0 = 2) {
+  constructor(width, height, p5, path) {
     // constants
     this.width = width;
     this.height = height;
@@ -151,16 +151,17 @@ class Crab {
     ];
     this.speed = 0.0001;
     this.crabWidth = 0.2 * this.width;
-    this.hidingWidth = 2 * radius + this.crabWidth;
+
+    // path
+    this.walkablePath = new WalkablePath(
+      this.p5,
+      path.vertexPoint,
+      path.bezierVertexPoints
+    );
 
     // variables
-    this.pos = pos;
-    this.alpha = alpha0;
-    this.radius = radius;
     this.cut = true;
     this.walk = true;
-    this.dx = this.pos[0];
-    this.dy = this.pos[1];
   }
 
   draw(controlFactor) {
@@ -186,13 +187,7 @@ class Crab {
     }
     if (this.walk) {
       // calculate movement
-      this.alpha += this.speed * this.p5.deltaTime;
-      this.dx =
-        Math.sin(this.alpha) * this.radius +
-        this.pos[0] +
-        this.p5.random(-0.1, 0.1);
-      this.dy = Math.cos(this.alpha) * this.radius + this.pos[1];
-      +this.p5.random(-0.1, 0.1);
+      [this.dx, this.dy] = this.walkablePath.walkOneStep();
       if (LEG_FRAMES[step]) {
         crabVertexToDraw[0] = this.legInLTop;
         crabVertexToDraw[3] = this.legInLBottom;
@@ -230,8 +225,5 @@ class Crab {
       crabVertexToDraw[17][1] + this.dy,
       1
     );
-    // draw hiding
-    //this.p5.fill(this.p5.color(ISLAND_STONES_COLOR));
-    //this.p5.arc(...this.pos, this.hidingWidth, this.hidingWidth, 0, 3);
   }
 }
