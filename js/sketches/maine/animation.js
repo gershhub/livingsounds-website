@@ -60,7 +60,7 @@ class MaineAnimation {
     this.audio = audio;
     if (this.audio != undefined) {
       let amp = this.audio.analyse();
-      amp.forEach((item) => let);
+      //amp.forEach((item) => let);
       console.log(amp);
       // update probabilities
       let timeDate = new Date();
