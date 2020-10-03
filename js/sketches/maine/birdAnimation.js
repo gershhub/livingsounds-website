@@ -4,7 +4,7 @@ class Bird {
     this.id = id;
     this.p5 = p5;
     this.trees = trees;
-    this.birdColor = this.p5.color("red");
+    this.birdColor = this.p5.color(BIRD_COLOR);
     this.speed = 1;
     this.h = 3;
     // variables

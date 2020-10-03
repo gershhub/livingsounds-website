@@ -1,5 +1,3 @@
-WAVE_COLOR = [242, 216, 167];
-WATER_COLOR = "#518EA6";
 class Wave {
   constructor(
     width,

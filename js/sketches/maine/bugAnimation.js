@@ -1,3 +1,4 @@
+
 class Bug {
   constructor(p5, id, trees) {
     // constants
@@ -17,7 +18,7 @@ class Bug {
   }
 
   fly(p) {
-    let c = this.p5.color("yellow");
+    let c = this.p5.color(BUG_COLOR);
     this.p5.stroke(c);
     this.p5.fill(c);
     if (this.fly_step != 0) {
@@ -33,7 +34,7 @@ class Bug {
         this.p5.triangle(x, y - h, x + h, y, x - h, y);
       }
       // draw a halo
-      let c = this.p5.color(255, 255, 255, this.p5.random(0, 70));
+      let c = this.p5.color(...BUG_COLOR_GLOW, this.p5.random(0, 70));
       this.p5.stroke(c);
       this.p5.fill(c);
       this.p5.circle(x, y, h * 5);

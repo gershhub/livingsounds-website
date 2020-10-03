@@ -8,13 +8,13 @@ class Tree {
     this.stemBottomP = stemBottomP;
     this.nBranches = nBranches;
 
-    this.branchColor = this.p5.color("#157a6e");
+    this.branchColor = this.p5.color(TREE_BRANCH_COLOR_1);
     if (coinFlip(0.5)){
-      this.branchColor = this.p5.color("#e9c46a")
+      this.branchColor = this.p5.color(TREE_BRANCH_COLOR_2)
     } else if (coinFlip(0.5)){
-      this.branchColor = this.p5.color("#f4a261")
+      this.branchColor = this.p5.color(TREE_BRANCH_COLOR_3)
     }
-    this.stemColor = this.p5.color("#bda2a2");
+    this.stemColor = this.p5.color(TREE_STEM_COLOR);
 
     //variables
     this.stemTopP = [stemBottomP[0], stemBottomP[1] - treeHeight];

@@ -1,6 +1,4 @@
-const LIGHT_HOUSE_COLOR = "#80A7B1";
-const LIGHT_HOUSE_COLOR_LIGHT = "#9FB7B8";
-const LIGHT_HOUSE_COLOR_DARK = "#709EAD";
+
 const LIGHT_HOUSE_VERTEX = [787, 508];
 const LIGHT_HOUSE_BEZIER_VERTEX = [
   [788.559, 445.7, 795.425, 420, 803, 400],
@@ -67,19 +65,19 @@ class Lighthouse {
     );
     this.p5.endShape();
     // draw window
-    this.p5.fill(this.p5.color("yellow"));
+    this.p5.fill(this.p5.color(LIGHT_HOUSE_WINDOW_COLRO));
     this.p5.circle(...this.lightPos, this.lightWidth);
     // draw rings
     this.p5.noFill();
     this.p5.stroke(this.p5.color(LIGHT_HOUSE_COLOR_LIGHT));
     this.p5.strokeWeight(3);
     this.p5.arc(...this.ring1);
-    this.p5.stroke(this.p5.color("#1f2f16"));
+    this.p5.stroke(this.p5.color(LIGHT_HOUSE_RAILING_COLOR));
     this.p5.strokeWeight(1);
     this.p5.arc(...this.ring2);
     // draw light
     this.p5.noStroke();
-    this.p5.fill(this.p5.color(255, 255, 255, 50));
+    this.p5.fill(this.p5.color(...LIGHT_HOUSE_BEAM_COLOR));
     this.angle += this.speed * this.p5.deltaTime;
     this.p5.arc(
       ...this.lightPos,

@@ -57,8 +57,6 @@
  d="M89.000,102.000 L69.000,126.000 L114.000,126.000 L89.000,102.000 Z"/>
 </svg>
 */
-const CRAB_COLOR = "#664226";
-const CRAB_HIGHLIGHT_COLOR = [128, 167, 177, 130];
 const CRAB_VERTEX = [
   [0.0, 114.0], // leg 0
   [25.0, 107.0],

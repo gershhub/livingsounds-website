@@ -1,5 +1,5 @@
 const BOAT_POS = [0.1, 0.7];
-const BOAT_COLOR = "white";
+
 const BOAT_VERTEX = [
   [469.287, 75.597],
   [435.0, 176.0],
