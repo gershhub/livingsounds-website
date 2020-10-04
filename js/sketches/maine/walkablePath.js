@@ -1,5 +1,5 @@
 class WalkablePath {
-  constructor(p5, vertexPoint, bezierVertexPoints, speed = 0.001) {
+  constructor(p5, vertexPoint, bezierVertexPoints, seed = 0, speed = 0.001) {
     // constants
     this.p5 = p5;
     this.vertexPoint = vertexPoint;
@@ -7,7 +7,7 @@ class WalkablePath {
     this.nSections = this.bezierVertexPoints.length;
     this.speed = speed;
     // variables
-    this.d = this.p5.random(0, 1);
+    this.d = seed;
     this.sectionCounter = 5;
     this.setSection();
   }

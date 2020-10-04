@@ -32,14 +32,19 @@ class MaineAnimation {
       this.islandWidth * 0.2,
       this.islandHeight * 0.2,
       this.p5,
-      this.island.getWalkPath(0.95)
+      this.island.getWalkPath(0.95),
+      0.4,
+      0.001
     );
     this.crab2 = new Crab(
       this.islandWidth * 0.2,
       this.islandHeight * 0.2,
       this.p5,
-      this.island.getWalkPath(0.94)
+      this.island.getWalkPath(0.94),
+      0.5,
+      0.00095
     );
+    this.lobster = new Lobster(this.width, this.height, this.p5);
 
     // configuration
     this.p5.frameRate(8);
@@ -92,13 +97,14 @@ class MaineAnimation {
     this.wave.draw(pWind);
     let hitForground = "forground" in this.wave.hitDetected;
     this.forground.draw(hitForground);
+    this.lobster.draw(pWind);
     // draw island
     this.p5.push();
     this.p5.translate(this.offsetX, this.offsetY);
     this.island.draw();
     this.forest.draw(pTree, pBird, pBug);
-    this.crab1.draw(pWind);
-    this.crab2.draw(pWind);
+    this.crab1.draw(1-pWind);
+    this.crab2.draw(1-pWind);
     this.lighthouse.draw();
     this.p5.pop();
   }

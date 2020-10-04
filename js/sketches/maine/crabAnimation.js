@@ -96,7 +96,7 @@ const CRAB_COLOR_PATCHES = [
 ];
 
 class Crab {
-  constructor(width, height, p5, path) {
+  constructor(width, height, p5, path, seed = 0, speed = 0.001) {
     // constants
     this.width = width;
     this.height = height;
@@ -149,14 +149,16 @@ class Crab {
       this.crabVertex[31][1] +
         0.4 * (this.crabVertex[4][0] - this.crabVertex[3][0]),
     ];
-    this.speed = 0.0001;
+    
     this.crabWidth = 0.2 * this.width;
 
     // path
     this.walkablePath = new WalkablePath(
       this.p5,
       path.vertexPoint,
-      path.bezierVertexPoints
+      path.bezierVertexPoints,
+      seed,
+      speed
     );
 
     // variables
