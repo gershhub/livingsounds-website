@@ -19,6 +19,24 @@
     font-size: .8rem;
 }
 
+#modalLogo {
+    /* text-align: left; */
+    /* width: 285px;
+	height: 331px; */
+	background-size: contain;
+    /* line-height: 200px; */
+    position: fixed;
+    top: 30%; 
+	right: 10%;
+	background-image: url("../img/LS-wide-logo.svg" );
+	background-repeat: no-repeat;
+	width: 285px;
+    height: 331px;
+	/* padding-top: 25%; */
+	 /* (img-height / img-width * container-width) */
+    z-index: 11;
+}
+
 .homeBody {
 	width: 100vw;
 	height: 100vh;
