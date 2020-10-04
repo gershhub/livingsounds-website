@@ -143,15 +143,36 @@ let Maine_setup = function (p) {
   document.getElementById("homeBodyApp").style.backgroundImage =
     "url('../img/MaineAnimation/bg.jpg')";
   document.getElementById("homeBodyApp").style.backgroundColor = "#000000";
-  document.getElementById("logoContainer").style.display = "none";
-  document.getElementById("designCredit").innerHTML =
-    "Animation by " +
-    "<a href='https://nayo.info' target='_blank'>Nan Zhao @ NAYO</a>";
+  // document.getElementById("logoContainer").style.display = "none";
+  // document.getElementById("designCredit").innerHTML =
+  //   "Animation by " +
+  //   "<a href='https://nayo.info' target='_blank'>Nan Zhao @ NAYO</a>";
+const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+const vw_vh = vw/vh;
+if(vw_vh < 1.15){
+  document.getElementById("modalLogo").style.display = "none";
+}
+else if(vw_vh >= 1.15 && vw_vh < 1.3){
+  document.getElementById("modalLogo").style.right = "2%";
+}
+else if(vw_vh >= 1.3  && vw_vh < 1.4){
+  document.getElementById("modalLogo").style.right = "3%";
+}
+else if(vw_vh >= 1.78){
+  document.getElementById("modalLogo").style.right = "15%";
+}
+if(/Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // true for mobile device
+  // console.log("mobile device");
+  document.getElementById("modalLogo").style.display = "none";
+}
+
   p.setup = function () {
     cnv = p.createCanvas(p.windowWidth, 720);
     cnv.style("display", "block");
     cnv.style("z-index", -1);
-    cnv.parent("sketchContainer");
+    cnv.parent("sketchContainer");  
     animation = new MaineAnimation(p.width, p.height, p);
   };
   p.draw = function () {
