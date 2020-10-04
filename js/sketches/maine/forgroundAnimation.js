@@ -57,7 +57,6 @@ class Forground {
       this.boatPos[1] + b * 6 * this.impact,
     ];
 
-    console.log(this.imgHeight)
     // draw buddle
     let ellipseWidth = this.imgWidth * (0.7 + this.impact);
     let ellipseHeight = this.imgHeight * this.impact;
