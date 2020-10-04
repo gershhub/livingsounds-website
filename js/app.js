@@ -162,6 +162,11 @@ else if(vw_vh >= 1.3  && vw_vh < 1.4){
 else if(vw_vh >= 1.78){
   document.getElementById("modalLogo").style.right = "15%";
 }
+if(/Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // true for mobile device
+  // console.log("mobile device");
+  document.getElementById("modalLogo").style.display = "none";
+}
 
   p.setup = function () {
     cnv = p.createCanvas(p.windowWidth, 720);
