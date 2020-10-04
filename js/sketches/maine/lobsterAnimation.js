@@ -183,6 +183,7 @@ class Lobster {
     this.r1 = 0;
     this.r2 = 0;
     this.f = 0;
+    this.flip = false;
 
     this.posList = LOBSTER_POS.map((item) => [
       item[0] * this.width,
@@ -207,6 +208,7 @@ class Lobster {
 
     if (step == 27) {
       this.jump = coinFlip(controlFactor);
+      this.flip = coinFlip(0.5)
       this.pos = this.posList[
         Math.floor(this.p5.random(0, this.posList.length))
       ];
@@ -223,16 +225,20 @@ class Lobster {
       } else if (phase == 2) {
         this.r2 -= 0.2;
       }
-
+      
       this.r1 = limitValue(this.r1, 0, 1);
       this.r2 = limitValue(this.r2, 0, 1);
       this.f = limitValue(this.f, 0, 1);
       let a = this.p5.sin(0.3 * this.p5.frameCount);
       let ellipseW = 30;
-      let ellipseH = 5;
+      let ellipseH = 8;
       let ellipseX = this.pos[0] + this.imgWidth * 2.22;
-      let ellipseY = this.pos[1] + a * 2 + this.imgHeight * 2.8;
+      let ellipseY = this.pos[1] + a * 2 + this.imgHeight * 2.78;
 
+      if(this.flip) {
+        this.p5.scale(-1,1)
+        this.p5.translate(-this.width, 0)
+      }
       // draw puddle
       this.p5.noStroke();
       this.p5.fill(this.p5.color(...WAVE_COLOR));
@@ -249,6 +255,7 @@ class Lobster {
         ellipseH * this.r2
       );
       // draw lobster
+      
       this.offScreen.clear();
       this.offScreen.rotate(-10);
       this.offScreen.beginShape();
@@ -259,7 +266,14 @@ class Lobster {
         );
       });
       this.offScreen.endShape(this.p5.CLOSE);
+      
       this.p5.image(this.offScreen, this.pos[0], this.pos[1]);
+      if(this.flip) {
+        this.p5.translate(this.width, 0)
+        this.p5.scale(-1,1)
+        
+      }
+      
     }
   }
 }
