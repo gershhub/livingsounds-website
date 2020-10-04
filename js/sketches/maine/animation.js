@@ -97,14 +97,14 @@ class MaineAnimation {
     this.wave.draw(pWind);
     let hitForground = "forground" in this.wave.hitDetected;
     this.forground.draw(hitForground);
-    this.lobster.draw(pWind);
+    this.lobster.draw(pWind * 0.5);
     // draw island
     this.p5.push();
     this.p5.translate(this.offsetX, this.offsetY);
     this.island.draw();
     this.forest.draw(pTree, pBird, pBug);
-    this.crab1.draw(1-pWind);
-    this.crab2.draw(1-pWind);
+    this.crab1.draw(1 - pWind);
+    this.crab2.draw(1 - pWind);
     this.lighthouse.draw();
     this.p5.pop();
   }
