@@ -57,7 +57,21 @@
     <script src="js/sketches/maine/islandAnimation.js"></script>
     <script src="js/sketches/maine/crabAnimation.js"></script>
     <script src="js/sketches/maine/utility.js"></script>
-    <script src="js/sketches/maine/colorData.js"></script>
+
+    <script>
+      var js_element = document.createElement("script");
+      var d = new Date();
+      var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      var nd = new Date(utc + (3600000*(-4)));
+      if( nd.getHours() >= 17){
+        js_element.setAttribute('src', "js/sketches/maine/colorData-night.js")
+      } else{
+        js_element.setAttribute('src', "js/sketches/maine/colorData.js")
+      }
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(js_element);
+    </script>
+    <!-- <script src="js/sketches/maine/colorData.js"></script> -->
     <script src="js/sketches/maine/walkablePath.js"></script>
     <script src="js/sketches/maine/lobsterAnimation.js"></script>
     <script src="js/app.js"></script>
