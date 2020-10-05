@@ -58,8 +58,8 @@ class Forground {
     ];
 
     // draw buddle
-    let ellipseWidth = 40 * (1 + this.impact);
-    let ellipseHeight = 20 * this.impact;
+    let ellipseWidth = this.imgWidth * (0.7 + this.impact);
+    let ellipseHeight = this.imgHeight * this.impact;
     this.p5.fill(this.p5.color(...WAVE_COLOR));
     this.p5.ellipse(
       dynPos[0] + this.imgWidth * 0.5,
