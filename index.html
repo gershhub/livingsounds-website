@@ -23,21 +23,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Living Sounds</title>
-    <meta property="og:site_name" content="Living Sounds: Maine Island"/>
-    <meta property="og:title" content="24/7 live sound from a Maine lighthouse island"/>
-    <meta property="og:description" content="Live from a historic lighthouse island in mid-coast Maine, it's the changing tides. Stay tuned for a foggy morning, a passing lobsterboat, an otter family dinner, and other chance dramas."/>
-    <meta property="og:image" content="https://livingsounds.earth/img/livingsounds-island-nayo.png">
+    <meta property="og:site_name" content="Living Sounds"/>
+    <meta property="og:title" content="24/7 live sound from a restored wetland"/>
+    <meta property="og:description" content="Live from a restored wetland in Plymouth, MA, mixed from dozens of microphones, it's springtime. Stay tuned for a dawn chorus, a sleepy afternoon, a thunderstorm, a bumble bee, and other chance dramas. Tune in for live musical performances and readings, all mixed into the live sound of nature."/>
+    <meta property="og:image" content="https://livingsounds.earth/img/livingsounds-nayo.jpg">
     <meta property="og:url" content="https://livingsounds.earth">
-    <meta name="twitter:card" content="https://livingsounds.earth/img/livingsounds-island-nayo.png">
+    <meta name="twitter:card" content="https://livingsounds.earth/img/livingsounds-nayo.jpg">
     <meta property="og:type" content="website"/>
-    <meta name="twitter:image:alt" content="Maine island visual animation designed by Studio NAYO">
+    <meta name="twitter:image:alt" content="Animated trees, swaying in the wind">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@livingtidmarsh">
     <meta name="twitter:creator" content="@gershonatron">
-    <meta name="twitter:title" content="Living Sounds: 24/7 live sound from an historic light station in Maine">
-    <meta name="twitter:description" content="Live from a historic lighthouse island in mid-coast Maine, it's the changing tides. Stay tuned for a foggy morning, a passing lobsterboat, an otter family dinner, and other chance dramas."/>
-    <meta name="twitter:image" content="https://livingsounds.earth/img/livingsounds-island-nayo.png">
+    <meta name="twitter:title" content="Living Sounds: 24/7 live sound from a restored wetland">
+    <meta name="twitter:description" content="Live from a wetland in Plymouth, MA, through dozens of microphones, it's springtime. Stay tuned for a dawn chorus, a sleepy afternoon, a thunderstorm, a bumble bee, and other chance dramas. Tune in for live musical performances and readings, all mixed into the live sound of nature."/>
+    <meta name="twitter:image" content="https://livingsounds.earth/img/livingsounds-nayo.jpg">
 
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
@@ -45,59 +45,44 @@
     <script src="js/vendor/jquery.js"></script>
     <script src="js/audio.js"></script>
     <script src="js/preloader.js"></script>
-    <script src="js/sketches/maine/animation.js"></script>
-    <script src="js/sketches/maine/waveAnimation.js"></script>
-    <script src="js/sketches/maine/forgroundAnimation.js"></script>
-    <script src="js/sketches/maine/treeAnimation.js"></script>
-    <script src="js/sketches/maine/forestData.js"></script>
-    <script src="js/sketches/maine/forestAnimation.js"></script>
-    <script src="js/sketches/maine/birdAnimation.js"></script>
-    <script src="js/sketches/maine/bugAnimation.js"></script>
-    <script src="js/sketches/maine/lighthouseAnimation.js"></script>
-    <script src="js/sketches/maine/islandAnimation.js"></script>
-    <script src="js/sketches/maine/crabAnimation.js"></script>
-    <script src="js/sketches/maine/utility.js"></script>
-    <script>
-      var js_element = document.createElement("script");
-      var d = new Date();
-      var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-      var nd = new Date(utc + (3600000*(-4)));
-      if( nd.getHours() >= 17){
-        js_element.setAttribute('src', "js/sketches/maine/colorData-night.js")
-      } else{
-        js_element.setAttribute('src', "js/sketches/maine/colorData.js")
-      }
-      var head = document.getElementsByTagName('head')[0];
-      head.appendChild(js_element);
-    </script>
-    <!-- <script src="js/sketches/maine/colorData.js"></script> -->
-    <script src="js/sketches/maine/walkablePath.js"></script>
-    <script src="js/sketches/maine/lobsterAnimation.js"></script>
+    <script src="js/sketches/TidmarshForestBath.js"></script>
+    <script src="js/sketches/LivingRings.js"></script>
     <script src="js/app.js"></script>
-
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5293RFT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="modalLogo">
-      <!-- <img src="img/LS-wide-logo.png" alt="logos"> -->
-    </div>
 
-    <div class="modalSchedule">
-        <h3>
-    Thanks for tuning in! The microphones on Whitehead Island are now being deinstalled. We'll be switching back to sounds from the Tidmarsh Wildlife Sanctuary later today. Check back soon!
-        </h3></div>
+<!--
+<div class="modalSchedule">
+  <p><span style="font-weight: bold;">Sunday, August 23, 2020</span><br><span style="font-size: 1.2rem;">slow immediate & CURRENTS Present</span></p>
+  <p><span style="font-weight: bold;">7pm EST | <a href="https://www.mattmccorkle.com/" target="_blank">Matt McCorkle</a></span><br>Natural soundscape twists into music and otherworldly sculptures 🐸🌊</p>
+  <p><span style="font-weight: bold;">8pm EST | <a href="https://cwandt.com/" target="_blank">CW&T with Pau & Tree</a></span><br>Bedtime reading with/to/about bugs 🐞🌒</p>
+  <p><span style="font-weight: bold;">8:30pm EST | <a href="http://xxx.tiri.xxx/" target="_blank">Tiri Kananuruk</a> & <a href="https://www.adorevolution.com/" target="_blank">Sebastián Morales</a></span><br>Livestream from the Microworld 🧫🧪</p>
+  <p><span style="font-weight: bold;">9pm EST | <a href="https://pioneerworks.org/residency/tommy-martinez/" target="_blank">Tommy Martinez</a></span><br>Good Evening 🌔🦋</p>
+  <p><span style="font-weight: bold;">10pm EST | <a href="http://www.mariyadimov.com/" target=_blank>Mariya Dimov</a></span><br>Guided Meditation 🧘‍♀️🔮🧘‍♂️</p>
+
+  <p>This evening's program hosted by <a href="https://ger.sh" target="_blank">Gershon</a> & <a href="https://www.xxxxxxxxxinliu.com/" target="_blank">Xin</a> 🐌💨</p>
+</div> 
+-->
+
     <div class="reveal medium" id="onboardingContainer" data-reveal>
       <div class="grid-container full">
         <div class="grid-x">
           <div class="cell large-12 textContainer">
             <button id="startButton" data-close ><img src="img/start.svg" alt="start listening"></button>
-            <h5 style="padding-top:5rem;">The sound you’re about to hear is coming to you live from the historic <a href="https://www.whiteheadlightstation.org/" target="_blank">Whitehead Lght Station</a> island in mid-coast Maine. Stay tuned for a foggy morning, a passing lobsterboat, an otter family dinner, and other chance dramas.</h5>
+            <h5 style="padding-top:5rem;">The sound you’re about to hear is live from a restored wetland in Plymouth, MA, mixed from dozens of microphones. Stay tuned for a dawn chorus, a sleepy afternoon, a thunderstorm, a bumble bee, and other chance dramas.</h5>
 	    
-<h5>If you're a returning guest, you'll know that our regular programming comes from several dozen microphones on a wetland in Plymouth, MA. But over the next two weeks, invited by the <a href="https://pointsnorthinstitute.org/ciff/" target="_blank">Camden International Film Festival (CIFF)</a> and its parent organization, <a href="https://pointsnorthinstitute.org/" target="_blank">Points North Institute</a>, we are bringing you live sound from the magical <a href="https://www.whiteheadlightstation.org/" target="_blank">Whitehead Island Light Station</a>. This special installation of 4 microphones across the island and 1 underwater hydrophone will run for the duration of the film festival.</h5>
-
-<h5>We frequently host host programs of music, performance, reading, and meditation. If you're inspired to do this on your site or be a part of future events, please <a href="https://bit.ly/livingsounds" target="_blank">get in touch</a>.</h5>
+<!-- 
+<h5>This evening, August 23, 2020, in collaboration with <a href="https://currentsvirtual.com/" target="_blank">CURRENTS VIRTUAL FESTIVAL 2020</a>, we'll be bringing you an evening program of live music, performance, reading, and meditation that respond to the wetland symphony. We hope to see you here on Living Sounds and on CURRENTS' twitch and facebook channels! 
+-->
+		    
+<h5>Check back often, as we'll be hosting live programs of music, performance, reading, and guided meditation that respond to the wetland symphony. Our last event was held in collaboration with the <a href="https://currentsvirtual.com/" target="_blank">CURRENTS VIRTUAL FESTIVAL 2020</a>. If you have any feedback for us, or if you're inspired to contribute to future events, please <a href="https://bit.ly/livingsounds" target="_blank">get in touch</a>. We’re looking for new visuals, live sonic mix-ins, and more. You can always find the link again on the info popup ↗️.</h5>
+            <!-- <p style="font-size:.8rem">PS this is a 🌟sneak peek🌟 on a work in progress, so you might find some bugs (the virtual kind!) here and there. If you find bugs, please <a href="https://bit.ly/livingsounds" target="_blank">let us know</a>. You can always find the link again on the info popup ↗️.</p> -->
+            <br>
+            <img src="img/SI_LO.png" alt="slow immediate and Living Observatory logos" id="SI_LO_logo" height="40%" width="40%">
+            <br>
           </div>
         </div>
       </div>
@@ -109,23 +94,34 @@
       <div class="grid-container full">
         <div class="grid-x">
           <div class="cell large-12 textContainer">
-            <h5>The 24/7 live sounds on this site come from 4 microphones and a hydrophone on <a href="https://www.whiteheadlightstation.org/" target="_blank">Whitehead Light Station</a>, an island off the coast of Maine. This year, many of us are cut off from nature and can't get to CIFF, our favorite documentary film festival, in person. With Living Sounds, we invite you to  bring a real live Maine island into your home. You can get here from there.
-           </h5>
-            <p class="infoText">If you're a returning guest, you'll know that our regular programming comes from several dozen microphones on a wetland in Plymouth, MA, called <a href="https://www.livingobservatory.org/" target="_blank">Tidmarsh</a>. We have been recording continuously there for years, and first built Living Sounds to bring the sounds and cycles of nature to a wider public at the beginning of the 2020 pandemic lockdown. This October's special island programming will continue for the duration of the <a href="https://pointsnorthinstitute.org/ciff/" target="_blank">Camden International Film Festival (CIFF)</a>, thanks to an invitation from its parent organization, the <a href="https://pointsnorthinstitute.org/" target="_blank">Points North Institute</a>, along with the gracious support of the historic <a href="https://www.whiteheadlightstation.org/" target="_blank">Whitehead Light Station</a>, which is hosting this installation.
-              
-            <p class="infoText">Living Sounds is brought to you by <a href="https://slowimmediate.com" target="_blank">slow immediate</a>, the creative engineering and art production studio of Xin Liu and Gershon Dublon. The visual animation for Living Sounds: Maine Island was specially commissioned for this event, and was wholly designed and built by <a href="https://www.nayo.info/" target="_blank">NAYO</a>, a Boston-based design and technology studio.</p>
+            <h5>The 24/7 live sounds on this site are a mix of dozens of handmade microphones that have been recording for years in the woods and swamps of a recovering
+ wetland in Plymouth, Massachusetts, called Tidmarsh. In this time of self-isolation and shelter-in-place, those of us in cities find ourselves cut off from nature when we
+ need it most. With Living Sounds, we invite you to join us in a real live restoration symphony.</h5>
+            <p class="infoText">Formerly a large industrial cranberry farm, Tidmarsh was once managed for productivity. Today, the <a href="https://www.massaudubon.
+ org/get-outdoors/wildlife-sanctuaries/tidmarsh" target="_blank">Mass Audubon Tidmarsh Wildlife Sanctuary</a> is a restoration wetland in the continual process of
+ transformation. Restoration is a change of conditions, new and renewed connections, migration, the flow of clean water.</p>
+            <p class="infoText">Over the last 8 years, a team of MIT researchers led by an innovative documentary media-maker has been recording the arc of change at
+ Tidmarsh through dozens of microphones, cameras, and sensors in the air, water, and soil. We call ourselves the <a href="https://livingobservatory.org"
+ target="_blank">Living Observatory</a>, and Our aims are to advance the science of ecological restoration, and to find new ways of telling the story of environmental change
+ and resilience.</p>
+            <p class="infoText">The visuals on this site were made by different designers inspired by the living sounds. Together, the sights and sounds are here to change
+ the conditions of our collective isolations, listening together to the unfolding story of a fragile ecosystem taking root.</p>
             <div class="socialLinks">
-              <button class="socialButton"><a href="https://www.instagram.com/slowimmediate/" target="_blank"><img src="img/social-instagram.svg" alt="Instagram Button"></a></button>
-              <button class="socialButton"><a href="https://twitter.com/slowimmediate" target="_blank"><img src="img/social-twitter.svg" alt="Twitter Button"></a></button>
+              <button class="socialButton"><a href="https://www.instagram.com/livingsounds.earth/" target="_blank"><img src="img/social-instagram.svg" alt="Instagram Button"></a></button>
+              <button class="socialButton"><a href="https://www.facebook.com/LivingObservatory/" target="_blank"><img src="img/social-facebook.svg" alt="Facebook Button"></a></button>
+              <button class="socialButton"><a href="https://twitter.com/livingtidmarsh" target="_blank"><img src="img/social-twitter.svg" alt="Twitter Button"></a></button>
               <button class="socialButton"><a href="https://bit.ly/livingsounds" target="_blank"><img src="img/social-email.svg" alt="Email list"></a></button>
             </div>
-            <br>
 
             <div id="projectCredits">
               <p>
-                Special thanks to the Whitehead Island Light Station and its intrepid island manager, Gigi Lirot. Thanks to Matt Wall, whose inter-island networking and technical expertise made this special event possible. Want to know more about the research behind this work? Check out this <a href="https://apnews.com/458c9358c8074197b90432361aa651f4" target="_blank">report from AP News</a>. Really interested? Have a look at our <a href="https://papers.ger.sh/MaytonDublon-SensoryLandscape-Presence-2018.pdf" target="_blank">journal article</a>.
+                Special 🙏 to:<br>🐞 MIT Media Lab <a href="https://resenv.media.mit.edu" target="_blank">Responsive Environments Group</a>. Want to know more about the research? Check out this <a href="https://apnews.com/458c9358c8074197b90432361aa651f4" target="_blank">report from AP News</a>. Really interested? Have a look at our <a href="https://papers.ger.sh/MaytonDublon-SensoryLandscape-Presence-2018.pdf" target="_blank">journal article</a>.
+                <br>
+                🍃 <a href="https://livingobservatory.org" target="_blank">Living Observatory</a> and its founder, 🐌🎥 <a href="https://en.wikipedia.org/wiki/Glorianna_Davenport" target="_blank">Glorianna Davenport</a>.
+                <br>
+                🦆 <a href="https://nayo.info/tidmarsh" target="_blank">Nan Zhao (NAYO)</a> and 🦉 <a href="https://bdm.cc" target="_blank">Brian Mayton</a>
               </p>
-              <p>Bugs? Ideas? Appreciation? Get in touch: <a href="https://bit.ly/livingsounds" target="_blank">https://bit.ly/livingsounds</a> or <a href="https://instagram.com/slowimmediate" target="_blank">@slowimmediate</a>.</p>
+              <p>Bugs? Ideas? Appreciation? Get in touch: <a href="https://bit.ly/livingsounds" target="_blank">https://bit.ly/livingsounds</a> or <a href="https://instagram.com/livingsounds.earth" target="_blank">@livingsounds.earth</a>.</p>
 
             </div>
 
@@ -137,13 +133,15 @@
     <div class="homeBody" id="homeBodyApp">
       <div id="sketchContainer" class="lowOpacity"></div>
       <div id="logoContainer">
-        <!-- <button onClick="togglePlay()"><img src="img/logo2x.png" alt="Logo" height="100%" width="100%"></button> -->
+        <button onClick="togglePlay()"><img src="img/logo2x.png" alt="Logo" height="100%" width="100%"></button>
       </div>
       <button id="infoButton" data-open="infoContainer"></button>
       <button id="playButton" onClick="togglePlay()"></button>
+      <button onClick="nextSketch()" id="nextButton"><img src="img/next.svg" alt="Next visual design"></button>
+      <button id="lastButton" onClick="lastSketch()"><img src="img/last.svg" alt="Last visual design"></button>
       <div id="designCredits">
-        <p><span id="designCredit">Animation by <a href='https://nayo.info' target='_blank'>Nan Zhao @ NAYO</a></span><br>
-        Brought to you by <a href="https://slowimmediate.com" target="_blank">slow immediate</a> + <a href="https://pointsnorthinstitute.org/" target="_blank">CIFF</a> </p>
+        <p><span id="designCredit">“Living Sounds” by <a href="https://orcungogus.com/" target="_blank">Orcun Gogus</a>, based on a sketch by <a href="https://generated.space/" target="_blank">Kjetil Golid</a></span><br>
+        Brought to you by <a href="https://slowimmediate.com" target="_blank">slow immediate</a> + <a href="https://livingobservatory.org" target="_blank">Living Observatory</a> | <a href="https://secure.squarespace.com/checkout/donate?donatePageId=579a05bfc534a55fb9b38118" target="_blank">DONATE</a></p>
       </div>
     </div>
   <script src="js/vendor/what-input.js"></script>
